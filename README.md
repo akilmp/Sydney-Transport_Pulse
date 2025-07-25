@@ -352,11 +352,11 @@ jobs:
   1. **Map** – real‑time vehicle positions (point geo, auto‑refresh 15 s).
   2. **Delay by Hour** – heatmap of average delay minutes across hours × routes.
   3. **On‑time % trend** – line chart by day.
-* Dashboards exported → `superset/dashboard_export.json`.
-  To import this file into Superset:
+* Dashboards exported under `superset/`.
+  To import the JSON files:
   1. Log in as an admin user.
   2. Go to **Settings → Import Dashboards**.
-  3. Upload `superset/dashboard_export.json` and confirm.
+  3. Upload any file from `superset/` and confirm.
 
 ---
 
