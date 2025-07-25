@@ -309,7 +309,7 @@ jobs:
       - run: flake8 ingest spark_jobs
       - name: dbt run & test
         run: |
-          cd dbt && dbt deps && dbt run -m +fact_trip_punctuality && dbt test
+          cd dbt && dbt deps && dbt run -m +fact_trip_punctuality --profiles-dir profiles && dbt test --profiles-dir profiles
   terraform:
     if: github.ref == 'refs/heads/main'
     needs: test

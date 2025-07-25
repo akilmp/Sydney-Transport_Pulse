@@ -31,7 +31,7 @@ silver_batch = BashOperator(
 
 dbt_run = BashOperator(
     task_id="dbt_run",
-    bash_command="cd /opt/airflow/dbt && dbt deps && dbt run && dbt test",
+    bash_command="cd /opt/airflow/dbt && dbt deps && dbt run --profiles-dir profiles && dbt test --profiles-dir profiles",
     dag=dag,
 )
 
