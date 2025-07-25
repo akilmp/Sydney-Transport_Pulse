@@ -442,3 +442,7 @@ Typical monthly dev‑env cost < **AUD 50** when idle (\~10 GB storage, low 
 ---
 
 *Last updated: 25 July 2025*
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
