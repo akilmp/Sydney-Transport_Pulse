@@ -1,0 +1,16 @@
+{
+  "version": "1.0.0",
+  "type": "dashboard",
+  "dashboard_title": "Example Transport Dashboard",
+  "charts": [
+    {
+      "slice_name": "Vehicle Position Count",
+      "viz_type": "big_number",
+      "params": {
+        "metric": "count",
+        "time_range": "No filter"
+      }
+    }
+  ],
+  "layout": {}
+}
