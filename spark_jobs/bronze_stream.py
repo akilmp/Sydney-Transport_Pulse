@@ -19,9 +19,12 @@ stream_df = (
     .load()
 )
 
-(
+query = (
     stream_df.writeStream.format("iceberg")
     .outputMode("append")
     .option("checkpointLocation", "/tmp/checkpoints/bronze")
     .toTable("stp.bronze_bus_positions")
+    .start()
 )
+
+query.awaitTermination()
