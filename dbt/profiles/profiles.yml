@@ -1,0 +1,6 @@
+stp:
+  outputs:
+    dev:
+      type: duckdb
+      path: ../warehouse/dev.duckdb
+  target: dev

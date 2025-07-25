@@ -1,0 +1,8 @@
+version: 2
+models:
+  - name: fact_trip_punctuality
+    tests:
+      - not_null:
+          column_name: trip_id
+      - not_null:
+          column_name: delay_min

@@ -1,0 +1,10 @@
+name: stp
+version: '1.0'
+config-version: 2
+
+profile: stp
+model-paths: ["models"]
+
+models:
+  stp:
+    +materialized: table

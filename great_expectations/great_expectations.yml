@@ -1,0 +1,10 @@
+# minimal Great Expectations config
+store_backend_defaults:
+  class_name: InMemoryStoreBackendDefaults
+
+data_docs_sites:
+  local_site:
+    class_name: SiteBuilder
+    store_backend:
+      class_name: TupleFilesystemStoreBackend
+      base_directory: great_expectations/uncommitted/data_docs/local_site/
