@@ -155,7 +155,12 @@ API access requires registering an app key with [TfNSW Open Data](https://openda
    cd sydney‑transport‑pulse
    cp .env.example .env   # add TFNSW_API_KEY & AWS creds (localstack optional)
    ```
-2. **Launch stack**
+2. **Install Python dependencies**
+
+   ```bash
+   pip install -r ingest/requirements.txt
+   ```
+3. **Launch stack**
 
    Start all services (Kafka, Spark, Airflow, MinIO, Prometheus, Grafana and Superset) with Docker Compose:
 
@@ -163,24 +168,24 @@ API access requires registering an app key with [TfNSW Open Data](https://openda
    docker compose up -d
    # Wait about 30s for Airflow on http://localhost:8080 and Superset on http://localhost:8088
    ```
-3. **Seed GTFS static** (daily job)
+4. **Seed GTFS static** (daily job)
 
    ```bash
    make fetch_gtfs_static          # downloads & pushes to MinIO s3://stp/gtfs_static/
    # DATE=20240101 make fetch_gtfs_static  # optional override
    ```
-4. **Start streaming**
+5. **Start streaming**
 
    Launch the Python producer which polls the TfNSW API and publishes messages to the `bus_positions` topic:
 
    ```bash
    python ingest/producer.py   # or docker exec kafka-producer
    ```
-5. **Trigger DAG manually**
+6. **Trigger DAG manually**
 
    1. Open Airflow → `pipeline_gtfs_bus` DAG → *Trigger Run*.
    2. Watch tasks: `bronze_stream`, `silver_batch`, `dbt_run`, `ge_validate`.
-6. **Explore data**
+7. **Explore data**
 
    ```sql
    -- inside Superset SQL Lab
