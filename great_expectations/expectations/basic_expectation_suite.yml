@@ -1,0 +1,16 @@
+expectation_suite_name: basic_expectation_suite
+expectations:
+  - expectation_type: expect_column_values_to_not_be_null
+    kwargs:
+      column: latitude
+  - expectation_type: expect_column_values_to_not_be_null
+    kwargs:
+      column: longitude
+  - expectation_type: expect_column_values_to_not_be_null
+    kwargs:
+      column: delay_sec
+  - expectation_type: expect_table_row_count_to_be_between
+    kwargs:
+      min_value: 1
+meta:
+  notes: Basic sanity checks for demo dataset
