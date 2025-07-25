@@ -31,13 +31,13 @@ silver_batch = BashOperator(
 
 dbt_run = BashOperator(
     task_id="dbt_run",
-    bash_command="cd /opt/airflow/dbt && dbt deps && dbt run && dbt test",
+    bash_command="cd /opt/airflow/dbt && dbt deps && dbt run --profiles-dir profiles && dbt test --profiles-dir profiles",
     dag=dag,
 )
 
 ge_validate = BashOperator(
     task_id="ge_validate",
-    bash_command="cd /opt/airflow/great_expectations && great_expectations checkpoint run stp_bus",
+    bash_command="great_expectations -c /opt/airflow/great_expectations/great_expectations.yml checkpoint run stp_bus",
     dag=dag,
 )
 
