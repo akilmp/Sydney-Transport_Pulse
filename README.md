@@ -79,7 +79,6 @@ The project is designed to showcase *every core competency* sought in 2025 junio
 5. Airflow task runs Great Expectations; fails pipeline if <95 % rows pass.
 6. dbt **`run`** and **`test`** create star‑schema (*gold*) in Snowflake, queried by Superset.
 
-*See `docs/architecture.png` for a PNG version of this diagram suitable for slides/videos.*
 
 ---
 
@@ -142,7 +141,6 @@ API access requires registering an app key with [TfNSW Open Data](https://openda
 │   ├── ci.yml                 # lint + unit tests
 │   └── deploy.yml             # Terraform plan/apply + dbt docs
 └── docs/
-    ├── architecture.png
     └── demo_script.md
 ```
 
@@ -391,7 +389,7 @@ Typical monthly dev‑env cost < **AUD 50** when idle (\~10 GB storage, low 
    * OBS Studio → 1440p window capture; enable mic + webcam corner (PiP).
 2. **Run order**
 
-   1. Architecture slide (docs/architecture.png).
+   1. Architecture diagram (ASCII in README).
    2. Terminal split view (`watch -n1 "kcat -C -t bus_positions -o -5"` + Spark logs).
    3. Airflow UI → DAG run.
    4. Great Expectations validation result green.
