@@ -37,7 +37,7 @@ dbt_run = BashOperator(
 
 ge_validate = BashOperator(
     task_id="ge_validate",
-    bash_command="cd /opt/airflow/great_expectations && great_expectations checkpoint run stp_bus",
+    bash_command="great_expectations checkpoint run stp_bus",
     dag=dag,
 )
 
