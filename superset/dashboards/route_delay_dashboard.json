@@ -1,0 +1,17 @@
+{
+  "version": "1.0.0",
+  "type": "dashboard",
+  "dashboard_title": "Route Delay Dashboard",
+  "charts": [
+    {
+      "slice_name": "Average Delay by Route",
+      "viz_type": "bar",
+      "params": {
+        "metrics": "avg_delay",
+        "groupby": "route",
+        "time_range": "No filter"
+      }
+    }
+  ],
+  "layout": {}
+}
