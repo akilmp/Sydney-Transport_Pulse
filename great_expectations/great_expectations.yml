@@ -1,6 +1,13 @@
 # minimal Great Expectations config
-store_backend_defaults:
-  class_name: InMemoryStoreBackendDefaults
+config_version: 3
+stores:
+  expectations_store:
+    class_name: ExpectationsStore
+    store_backend:
+      class_name: TupleFilesystemStoreBackend
+      base_directory: great_expectations/expectations/
+
+expectations_store_name: expectations_store
 
 data_docs_sites:
   local_site:
