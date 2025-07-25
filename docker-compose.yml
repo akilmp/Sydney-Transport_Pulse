@@ -1,0 +1,84 @@
+version: '3.8'
+services:
+  zookeeper:
+    image: confluentinc/cp-zookeeper:7.5.0
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+    ports:
+      - "2181:2181"
+
+  kafka:
+    image: confluentinc/cp-kafka:7.5.0
+    depends_on:
+      - zookeeper
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+    ports:
+      - "9092:9092"
+
+  spark:
+    image: bitnami/spark:3.5
+    environment:
+      - SPARK_MODE=master
+    ports:
+      - "7077:7077"
+      - "8080:8080"
+    volumes:
+      - ./spark_jobs:/opt/bitnami/spark/jobs
+
+  airflow:
+    image: apache/airflow:2.9.0
+    depends_on:
+      - kafka
+      - spark
+      - minio
+    environment:
+      - AIRFLOW__CORE__LOAD_EXAMPLES=False
+      - AIRFLOW__CORE__EXECUTOR=LocalExecutor
+      - AIRFLOW__WEBSERVER__SECRET_KEY=temporary_key
+    volumes:
+      - ./airflow/dags:/opt/airflow/dags
+    ports:
+      - "8080:8080"
+
+  minio:
+    image: minio/minio:latest
+    command: server /data --console-address ":9001"
+    environment:
+      MINIO_ROOT_USER: ${MINIO_ROOT_USER:-minioadmin}
+      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD:-minioadmin}
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    volumes:
+      - minio-data:/data
+
+  prometheus:
+    image: prom/prometheus:latest
+    volumes:
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
+    ports:
+      - "9090:9090"
+
+  grafana:
+    image: grafana/grafana:latest
+    depends_on:
+      - prometheus
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./monitoring/grafana:/var/lib/grafana
+
+  superset:
+    image: apache/superset:latest
+    environment:
+      SUPERSET_LOAD_EXAMPLES: "no"
+    ports:
+      - "8088:8088"
+    depends_on:
+      - minio
+volumes:
+  minio-data:

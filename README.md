@@ -159,9 +159,11 @@ API access requires registering an app key with [TfNSW Open Data](https://openda
    ```
 2. **Launch stack**
 
+   Start all services (Kafka, Spark, Airflow, MinIO, Prometheus, Grafana and Superset) with Docker Compose:
+
    ```bash
-   docker compose up ‑d
-   # Wait ≈30 s for Airflow webserver on http://localhost:8080 and Superset on :8088
+   docker compose up -d
+   # Wait about 30s for Airflow on http://localhost:8080 and Superset on http://localhost:8088
    ```
 3. **Seed GTFS static** (daily job)
 
@@ -170,12 +172,14 @@ API access requires registering an app key with [TfNSW Open Data](https://openda
    ```
 4. **Start streaming**
 
+   Launch the Python producer which polls the TfNSW API and publishes messages to the `bus_positions` topic:
+
    ```bash
-   poetry run python ingest/producer.py   # or docker exec kafka‑producer
+   poetry run python ingest/producer.py   # or docker exec kafka-producer
    ```
 5. **Trigger DAG manually**
 
-   1. Open Airflow → `pipeline_gtfs_bus.yaml` DAG → *Trigger Run*.
+   1. Open Airflow → `pipeline_gtfs_bus` DAG → *Trigger Run*.
    2. Watch tasks: `bronze_stream`, `silver_batch`, `dbt_run`, `ge_validate`.
 6. **Explore data**
 
