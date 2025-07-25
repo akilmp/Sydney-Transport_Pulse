@@ -169,6 +169,7 @@ API access requires registering an app key with [TfNSW Open Data](https://openda
 
    ```bash
    make fetch_gtfs_static          # downloads & pushes to MinIO s3://stp/gtfs_static/
+   # DATE=20240101 make fetch_gtfs_static  # optional override
    ```
 4. **Start streaming**
 

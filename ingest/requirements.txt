@@ -3,3 +3,4 @@ protobuf
 grpcio
 kafka-python
 python-dotenv
+boto3
