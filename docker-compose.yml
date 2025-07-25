@@ -41,6 +41,8 @@ services:
       - AIRFLOW__WEBSERVER__SECRET_KEY=temporary_key
     volumes:
       - ./airflow/dags:/opt/airflow/dags
+      - ./dbt:/opt/airflow/dbt
+      - ./great_expectations:/opt/airflow/great_expectations
     ports:
       - "8080:8080"
 
