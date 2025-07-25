@@ -4,3 +4,4 @@ grpcio
 kafka-python
 python-dotenv
 boto3
+flake8
