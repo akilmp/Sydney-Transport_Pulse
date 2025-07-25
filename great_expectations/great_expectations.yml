@@ -5,13 +5,45 @@ stores:
     class_name: ExpectationsStore
     store_backend:
       class_name: TupleFilesystemStoreBackend
-      base_directory: great_expectations/expectations/
+      base_directory: expectations/
+      filepath_suffix: .yml
+  checkpoint_store:
+    class_name: CheckpointStore
+    store_backend:
+      class_name: TupleFilesystemStoreBackend
+      base_directory: checkpoints/
+      filepath_suffix: .yml
+  validations_store:
+    class_name: ValidationsStore
+    store_backend:
+      class_name: TupleFilesystemStoreBackend
+      base_directory: uncommitted/validations/
+      filepath_suffix: .json
+  evaluation_parameter_store:
+    class_name: EvaluationParameterStore
 
 expectations_store_name: expectations_store
+checkpoint_store_name: checkpoint_store
+validations_store_name: validations_store
+evaluation_parameter_store_name: evaluation_parameter_store
 
 data_docs_sites:
   local_site:
     class_name: SiteBuilder
     store_backend:
       class_name: TupleFilesystemStoreBackend
-      base_directory: great_expectations/uncommitted/data_docs/local_site/
+      base_directory: uncommitted/data_docs/local_site/
+
+datasources:
+  stp:
+    class_name: Datasource
+    execution_engine:
+      class_name: PandasExecutionEngine
+    data_connectors:
+      default_inferred_data_connector_name:
+        class_name: InferredAssetFilesystemDataConnector
+        base_directory: ../data/
+        default_regex:
+          pattern: (.*)\.csv
+          group_names:
+            - data_asset_name

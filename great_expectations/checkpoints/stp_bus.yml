@@ -1,6 +1,17 @@
-checkpoint_name: stp_bus
+name: stp_bus
+config_version: 1
 class_name: Checkpoint
 run_name_template: stp_bus_%Y%m%d
+action_list:
+  - name: store_validation_result
+    action:
+      class_name: StoreValidationResultAction
+  - name: store_evaluation_params
+    action:
+      class_name: StoreEvaluationParametersAction
+  - name: update_data_docs
+    action:
+      class_name: UpdateDataDocsAction
 validations:
   - batch_request:
       datasource_name: stp
