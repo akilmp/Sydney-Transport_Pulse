@@ -1,4 +1,4 @@
-expectation_suite_name: bus.expectation_suite
+expectation_suite_name: bus_expectation_suite
 expectations:
   - expectation_type: expect_column_values_to_not_be_null
     kwargs:
