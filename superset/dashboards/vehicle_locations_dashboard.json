@@ -1,0 +1,15 @@
+{
+  "version": "1.0.0",
+  "type": "dashboard",
+  "dashboard_title": "Vehicle Locations Map",
+  "charts": [
+    {
+      "slice_name": "Vehicle Locations",
+      "viz_type": "map",
+      "params": {
+        "time_range": "No filter"
+      }
+    }
+  ],
+  "layout": {}
+}
