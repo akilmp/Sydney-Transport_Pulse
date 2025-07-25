@@ -176,7 +176,7 @@ API access requires registering an app key with [TfNSW Open Data](https://openda
    Launch the Python producer which polls the TfNSW API and publishes messages to the `bus_positions` topic:
 
    ```bash
-   poetry run python ingest/producer.py   # or docker exec kafka-producer
+   python ingest/producer.py   # or docker exec kafka-producer
    ```
 5. **Trigger DAG manually**
 
