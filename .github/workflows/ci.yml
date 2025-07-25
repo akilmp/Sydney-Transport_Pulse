@@ -6,7 +6,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
-      - run: pip install flake8 dbt-core
+      - run: |
+          pip install -r ingest/requirements.txt
+          pip install flake8 dbt-core dbt-duckdb
+
       - run: flake8 ingest spark_jobs
       - name: dbt run & test
         run: |
@@ -17,6 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: prod
     steps:
+      - uses: actions/checkout@v4
       - uses: hashicorp/setup-terraform@v3
       - run: terraform fmt -check
       - run: terraform init
