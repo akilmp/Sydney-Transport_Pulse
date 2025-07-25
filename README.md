@@ -281,6 +281,14 @@ silver_batch  ->  dbt_run  ->  ge_validate  ->  superset_refresh
 
 Failing any GE checkpoint marks Airflow task **failed**, halting DAG.
 
+### Running validations locally
+
+Execute the checkpoint using the Great Expectations CLI:
+
+```bash
+great_expectations -c great_expectations/great_expectations.yml checkpoint run stp_bus
+```
+
 ---
 
 ## CI/CD Workflow

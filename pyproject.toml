@@ -12,7 +12,7 @@ grpcio = "*"
 kafka-python = "*"
 python-dotenv = "*"
 pyspark = "*"
-boto3 = "*"
+great_expectations = "*"
 
 [build-system]
 requires = ["poetry-core"]

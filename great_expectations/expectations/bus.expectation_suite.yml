@@ -20,8 +20,8 @@ expectations:
     kwargs:
       column: delay_sec
       min_value: 0
-  - expectation_type: expect_table_row_count_to_be_greater_than
+  - expectation_type: expect_table_row_count_to_be_between
     kwargs:
-      value: 0
+      min_value: 1
 meta:
   notes: Minimal checks per README
