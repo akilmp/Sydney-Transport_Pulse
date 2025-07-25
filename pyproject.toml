@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "sydney-transport-pulse"
+version = "0.1.0"
+description = "Data pipeline for Sydney Transport Pulse"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+requests = "*"
+protobuf = "*"
+grpcio = "*"
+kafka-python = "*"
+python-dotenv = "*"
+pyspark = "*"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
