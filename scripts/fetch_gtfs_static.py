@@ -1,6 +1,8 @@
 import os
 import sys
 from datetime import date
+from pathlib import Path
+
 import requests
 import boto3
 
@@ -16,8 +18,8 @@ def main():
     resp = requests.get(url, headers=headers, timeout=60)
     resp.raise_for_status()
 
-    filename = f'gtfs_{day}.zip'
-    with open(filename, 'wb') as f:
+    filename = Path(f"gtfs_{day}.zip")
+    with filename.open("wb") as f:
         f.write(resp.content)
 
     s3 = boto3.client(
@@ -31,8 +33,18 @@ def main():
         ),
         region_name="us-east-1",
     )
-    s3.upload_file(filename, 'stp', f'gtfs_static/{day}.zip')
-    print(f'Uploaded {filename} to s3://stp/gtfs_static/{day}.zip')
+
+    bucket = "stp"
+    key = f"gtfs_static/{day}.zip"
+
+    try:
+        s3.head_bucket(Bucket=bucket)
+    except s3.exceptions.ClientError:
+        s3.create_bucket(Bucket=bucket)
+
+    s3.upload_file(str(filename), bucket, key)
+    print(f"Uploaded {filename} to s3://{bucket}/{key}")
+    filename.unlink(missing_ok=True)
 
 
 if __name__ == '__main__':
