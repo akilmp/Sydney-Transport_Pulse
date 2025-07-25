@@ -8,8 +8,11 @@ jobs:
       - uses: actions/checkout@v4
       - uses: hashicorp/setup-terraform@v3
       - run: terraform init
+        working-directory: iac/terraform
       - run: terraform plan -out=tfplan
+        working-directory: iac/terraform
       - run: terraform apply -input=false tfplan
+        working-directory: iac/terraform
       - name: dbt docs
         run: |
           cd dbt && dbt docs generate
