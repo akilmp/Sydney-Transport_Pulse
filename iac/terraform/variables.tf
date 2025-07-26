@@ -35,11 +35,13 @@ variable "number_of_broker_nodes" {
 variable "subnet_ids" {
   description = "Subnet IDs used for networking"
   type        = list(string)
+  default     = []
 }
 
 variable "security_group_ids" {
   description = "Security groups for networking"
   type        = list(string)
+  default     = []
 }
 
 variable "emr_application_name" {
