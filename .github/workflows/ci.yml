@@ -35,6 +35,9 @@ jobs:
       - uses: actions/checkout@v4
       - uses: hashicorp/setup-terraform@v3
       - run: terraform fmt -check
+        working-directory: iac/terraform
       - run: terraform init
       - run: terraform plan -input=false -out=tfplan
+
       - run: terraform apply -input=false tfplan
+        working-directory: iac/terraform

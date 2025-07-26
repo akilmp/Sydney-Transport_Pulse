@@ -22,6 +22,7 @@ jobs:
       - run: terraform init
       - run: terraform plan -input=false -out=tfplan
       - run: terraform apply -input=false tfplan
+        working-directory: iac/terraform
       - name: dbt docs
         run: |
           cd dbt && dbt docs generate
