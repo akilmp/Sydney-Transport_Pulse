@@ -35,16 +35,24 @@ variable "number_of_broker_nodes" {
 variable "subnet_ids" {
   description = "Subnet IDs used for networking"
   type        = list(string)
+  default     = []
 }
 
 variable "security_group_ids" {
   description = "Security groups for networking"
   type        = list(string)
+  default     = []
 }
 
 variable "emr_application_name" {
   description = "Name of the EMR Serverless application"
   type        = string
+}
+
+variable "emr_application_type" {
+  description = "Type of the EMR Serverless application"
+  type        = string
+  default     = "SPARK"
 }
 
 variable "mwaa_env_name" {
@@ -54,6 +62,11 @@ variable "mwaa_env_name" {
 
 variable "mwaa_dag_s3_path" {
   description = "S3 path to MWAA DAGs"
+  type        = string
+}
+
+variable "mwaa_source_bucket_arn" {
+  description = "ARN of the S3 bucket containing MWAA DAGs"
   type        = string
 }
 

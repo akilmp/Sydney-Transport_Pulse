@@ -32,11 +32,13 @@ The root module exposes a number of variables used by the modules:
 | `kafka_version` | Kafka version for MSK | `3.4.0` |
 | `broker_instance_type` | Broker EC2 instance type | `kafka.m5.large` |
 | `number_of_broker_nodes` | Number of MSK brokers | `2` |
-| `subnet_ids` | Subnets used by MSK and MWAA | n/a |
-| `security_group_ids` | Security groups applied to resources | n/a |
+| `subnet_ids` | Subnets used by MSK and MWAA | `[]` |
+| `security_group_ids` | Security groups applied to resources | `[]` |
 | `emr_application_name` | EMR Serverless application name | n/a |
+| `emr_application_type` | EMR Serverless application type | `SPARK` |
 | `mwaa_env_name` | Name of the MWAA environment | n/a |
 | `mwaa_dag_s3_path` | S3 prefix where DAGs are stored | n/a |
+| `mwaa_source_bucket_arn` | ARN of the S3 bucket for MWAA DAGs | n/a |
 | `mwaa_execution_role_arn` | IAM role ARN for MWAA | n/a |
 
 Values can be provided via `terraform.tfvars` files for each environment.
@@ -75,6 +77,7 @@ module "emr" {
   source           = "./modules/emr"
   application_name = var.emr_application_name
   release_label    = var.kafka_version
+  application_type = var.emr_application_type
 }
 ```
 
@@ -86,6 +89,7 @@ module "mwaa" {
   env_name            = var.mwaa_env_name
   dag_s3_path         = var.mwaa_dag_s3_path
   execution_role_arn  = var.mwaa_execution_role_arn
+  source_bucket_arn   = var.mwaa_source_bucket_arn
   network_subnet_ids  = var.subnet_ids
   security_group_ids  = var.security_group_ids
 }

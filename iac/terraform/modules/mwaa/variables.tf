@@ -13,6 +13,11 @@ variable "execution_role_arn" {
   type        = string
 }
 
+variable "source_bucket_arn" {
+  description = "ARN of the S3 bucket with DAGs"
+  type        = string
+}
+
 variable "network_subnet_ids" {
   description = "Subnet IDs for MWAA"
   type        = list(string)

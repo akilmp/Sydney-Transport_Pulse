@@ -25,6 +25,7 @@ module "emr" {
   source           = "./modules/emr"
   application_name = var.emr_application_name
   release_label    = var.kafka_version
+  application_type = var.emr_application_type
 }
 
 module "mwaa" {
@@ -32,6 +33,7 @@ module "mwaa" {
   env_name           = var.mwaa_env_name
   dag_s3_path        = var.mwaa_dag_s3_path
   execution_role_arn = var.mwaa_execution_role_arn
+  source_bucket_arn  = var.mwaa_source_bucket_arn
   network_subnet_ids = var.subnet_ids
   security_group_ids = var.security_group_ids
 }
