@@ -30,10 +30,14 @@ jobs:
       TF_VAR_mwaa_dag_s3_path: ${{ secrets.MWAA_DAG_S3_PATH }}
       TF_VAR_mwaa_execution_role_arn: ${{ secrets.MWAA_EXECUTION_ROLE_ARN }}
       TF_VAR_mwaa_source_bucket_arn: ${{ secrets.MWAA_SOURCE_BUCKET_ARN }}
+
     steps:
       - uses: actions/checkout@v4
       - uses: hashicorp/setup-terraform@v3
       - run: terraform fmt -check
+        working-directory: iac/terraform
       - run: terraform init
       - run: terraform plan -input=false -out=tfplan
+
       - run: terraform apply -input=false tfplan
+        working-directory: iac/terraform
