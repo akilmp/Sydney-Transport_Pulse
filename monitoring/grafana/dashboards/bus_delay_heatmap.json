@@ -1,0 +1,12 @@
+{
+  "title": "Bus Delay Heatmap",
+  "uid": "bus_delay_heatmap",
+  "version": 1,
+  "panels": [
+    {
+      "type": "heatmap",
+      "title": "Average Delay by Hour",
+      "targets": [{"expr": "avg_delay_minutes{job=\"bus\"}"}]
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "title": "Pipeline Health",
+  "uid": "pipeline_health",
+  "version": 1,
+  "panels": [
+    {
+      "type": "graph",
+      "title": "DAG Duration",
+      "targets": [{"expr": "airflow_dag_run_duration"}]
+    },
+    {
+      "type": "graph",
+      "title": "Task Success Ratio",
+      "targets": [{"expr": "airflow_task_success_ratio"}]
+    }
+  ]
+}
