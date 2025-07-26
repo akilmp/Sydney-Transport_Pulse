@@ -32,8 +32,8 @@ The root module exposes a number of variables used by the modules:
 | `kafka_version` | Kafka version for MSK | `3.4.0` |
 | `broker_instance_type` | Broker EC2 instance type | `kafka.m5.large` |
 | `number_of_broker_nodes` | Number of MSK brokers | `2` |
-| `subnet_ids` | Subnets used by MSK and MWAA | n/a |
-| `security_group_ids` | Security groups applied to resources | n/a |
+| `subnet_ids` | Subnets used by MSK and MWAA | `[]` |
+| `security_group_ids` | Security groups applied to resources | `[]` |
 | `emr_application_name` | EMR Serverless application name | n/a |
 | `mwaa_env_name` | Name of the MWAA environment | n/a |
 | `mwaa_dag_s3_path` | S3 prefix where DAGs are stored | n/a |
