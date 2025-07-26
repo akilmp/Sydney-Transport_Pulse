@@ -10,11 +10,12 @@ jobs:
     env:
       TF_VAR_data_lake_bucket: ${{ secrets.DATA_LAKE_BUCKET }}
       TF_VAR_msk_cluster_name: ${{ secrets.MSK_CLUSTER_NAME }}
-
       TF_VAR_emr_application_name: ${{ secrets.EMR_APPLICATION_NAME }}
       TF_VAR_mwaa_env_name: ${{ secrets.MWAA_ENV_NAME }}
       TF_VAR_mwaa_dag_s3_path: ${{ secrets.MWAA_DAG_S3_PATH }}
       TF_VAR_mwaa_execution_role_arn: ${{ secrets.MWAA_EXECUTION_ROLE_ARN }}
+      TF_VAR_mwaa_source_bucket_arn: ${{ secrets.MWAA_SOURCE_BUCKET_ARN }}
+
     steps:
       - uses: actions/checkout@v4
       - uses: hashicorp/setup-terraform@v3

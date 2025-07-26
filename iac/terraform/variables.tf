@@ -49,6 +49,12 @@ variable "emr_application_name" {
   type        = string
 }
 
+variable "emr_application_type" {
+  description = "Type of the EMR Serverless application"
+  type        = string
+  default     = "SPARK"
+}
+
 variable "mwaa_env_name" {
   description = "MWAA environment name"
   type        = string
@@ -56,6 +62,11 @@ variable "mwaa_env_name" {
 
 variable "mwaa_dag_s3_path" {
   description = "S3 path to MWAA DAGs"
+  type        = string
+}
+
+variable "mwaa_source_bucket_arn" {
+  description = "ARN of the S3 bucket containing MWAA DAGs"
   type        = string
 }
 

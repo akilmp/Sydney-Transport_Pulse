@@ -8,3 +8,9 @@ variable "release_label" {
   type        = string
   default     = "emr-6.10.0"
 }
+
+variable "application_type" {
+  description = "Type of the EMR Serverless application"
+  type        = string
+  default     = "SPARK"
+}
