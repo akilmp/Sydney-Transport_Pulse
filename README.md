@@ -340,6 +340,12 @@ jobs:
   * *Pipeline Health* – DAG duration, task success ratio.
   * *Bus Delay Heatmap* – real‑time average delay by route/hour.
   * *Infrastructure* – MSK broker CPU, EMR cost.
+  
+  Example JSON exports are provided under `monitoring/grafana/dashboards/`.
+  To load them into Grafana:
+  1. Open the Grafana web UI.
+  2. Navigate to **Create → Import**.
+  3. Upload any dashboard JSON file from that directory and confirm.
 * **Alerts**
 
   * Slack alert if `ge_validate` fails.

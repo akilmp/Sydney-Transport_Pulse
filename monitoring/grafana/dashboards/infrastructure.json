@@ -1,0 +1,17 @@
+{
+  "title": "Infrastructure",
+  "uid": "infrastructure",
+  "version": 1,
+  "panels": [
+    {
+      "type": "graph",
+      "title": "MSK Broker CPU",
+      "targets": [{"expr": "avg(rate(node_cpu_seconds_total{job=\"msk\",mode=\"user\"}[5m]))"}]
+    },
+    {
+      "type": "graph",
+      "title": "EMR Cost",
+      "targets": [{"expr": "sum(emr_cost_daily)"}]
+    }
+  ]
+}
