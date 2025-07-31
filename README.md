@@ -453,10 +453,3 @@ Typical monthly dev‑env cost < **AUD 50** when idle (\~10 GB storage, low 
 * AWS EMR Serverless best practices – 2025 white‑paper
 * dbt “Definitive Guide to Star Schemas” – dbt Labs 2023
 
----
-
-*Last updated: 25 July 2025*
-
-## License
-
-This project is licensed under the [MIT License](LICENSE).
