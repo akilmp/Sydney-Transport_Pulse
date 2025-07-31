@@ -16,10 +16,9 @@
 12. [Visualisation Layer](#visualisation-layer)
 13. [Security & Compliance](#security--compliance)
 14. [Cost‑Management Guidelines](#cost-management-guidelines)
-15. [Demo Recording Guide](#demo-recording-guide)
-16. [Troubleshooting & FAQ](#troubleshooting--faq)
-17. [Stretch Goals](#stretch-goals)
-18. [References & Further Reading](#references--further-reading)
+15. [Troubleshooting & FAQ](#troubleshooting--faq)
+16. [Stretch Goals](#stretch-goals)
+17. [References & Further Reading](#references--further-reading)
 
 ---
 
@@ -398,30 +397,6 @@ jobs:
 
 Typical monthly dev‑env cost < **AUD 50** when idle (\~10 GB storage, low MSK usage).
 
----
-
-## Demo Recording Guide
-
-1. **Prep**
-
-   * `docker compose up` + trigger pipeline 5 min before recording so Superset has data.
-   * OBS Studio → 1440p window capture; enable mic + webcam corner (PiP).
-2. **Run order**
-
-   1. Architecture diagram (ASCII in README).
-   2. Terminal split view (`watch -n1 "kcat -C -t bus_positions -o -5"` + Spark logs).
-   3. Airflow UI → DAG run.
-   4. Great Expectations validation result green.
-   5. Superset dashboard animation.
-   6. GitHub Actions run badge green.
-3. **Narration tips**
-
-   * Hook viewer with relatable pain (“missed the 891 again”).
-   * Highlight each buzzword once: *streaming*, *lakehouse*, *data quality*, *IaC*, *observability*.
-4. **Publish**
-
-   * Title: “🚍 Real‑time Lakehouse on AWS: Sydney Transport Pulse (Data‑Engineering Demo)”.
-   * Description: link repo + timestamps + tech stack hashtags (#Spark #dbt #Iceberg).
 
 ---
 
