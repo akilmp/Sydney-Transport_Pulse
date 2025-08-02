@@ -13,7 +13,10 @@ jobs:
       - run: flake8 ingest spark_jobs
       - name: dbt run & test
         run: |
-          cd dbt && dbt deps && dbt run -m +fact_trip_punctuality --profiles-dir profiles && dbt test --profiles-dir profiles
+          cd dbt && \
+          dbt deps && \
+          dbt run -m +fact_trip_punctuality --profiles-dir profiles && \
+          dbt test --profiles-dir profiles
   terraform:
     if: github.ref == 'refs/heads/main'
     needs: test
@@ -30,6 +33,10 @@ jobs:
       TF_VAR_mwaa_dag_s3_path: ${{ secrets.MWAA_DAG_S3_PATH }}
       TF_VAR_mwaa_execution_role_arn: ${{ secrets.MWAA_EXECUTION_ROLE_ARN }}
       TF_VAR_mwaa_source_bucket_arn: ${{ secrets.MWAA_SOURCE_BUCKET_ARN }}
+      TF_VAR_network_subnet_ids: >-
+        ["${{ secrets.SUBNET_IDS//,/"," }}"]
+      TF_VAR_security_group_ids: >-
+        ["${{ secrets.SECURITY_GROUP_IDS }}"]
 
     steps:
       - uses: actions/checkout@v4
