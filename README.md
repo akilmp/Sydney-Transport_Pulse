@@ -217,15 +217,7 @@ API access requires registering an app key with [TfNSW Open Data](https://openda
 3. `terraform apply` (creates S3 bucket `stp‑lake‑prod`, MSK cluster, EMR Serverless workspace, MWAA env, IAM roles).
 4. Push Airflow DAG & plugins to MWAA S3 bucket.
 5. Trigger MWAA DAG to start streaming job on EMR Serverless.
-6. Set GitHub Secrets so `deploy.yml` can run Terraform from CI.
 
-   Required secrets:
-   * `AWS_ACCESS_KEY_ID` – IAM access key
-   * `AWS_SECRET_ACCESS_KEY` – matching secret key
-   * `AWS_REGION` – e.g. `ap-southeast-2`
-   * (optional) `AWS_ROLE` for assume-role flows
-
-   The workflow now includes a `dbt docs` publishing step after `terraform apply`.
 
 ### Terraform state‑management
 
@@ -330,7 +322,6 @@ jobs:
       - run: terraform apply -input=false tfplan
 ```
 
-* **Secrets:** stored in GitHub → *Settings → Secrets → Actions* (AWS creds, Slack webhook, TFNSW key).
 * **dbt Docs Publish:** post‐deploy step uploads site to S3 and invalidates CloudFront.
 
 ---
