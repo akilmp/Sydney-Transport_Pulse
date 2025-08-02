@@ -33,10 +33,10 @@ jobs:
       TF_VAR_mwaa_dag_s3_path: ${{ secrets.MWAA_DAG_S3_PATH }}
       TF_VAR_mwaa_execution_role_arn: ${{ secrets.MWAA_EXECUTION_ROLE_ARN }}
       TF_VAR_mwaa_source_bucket_arn: ${{ secrets.MWAA_SOURCE_BUCKET_ARN }}
-      TF_VAR_network_subnet_ids: >-
+      TF_VAR_subnet_ids: >-
         ["${{ secrets.SUBNET_IDS//,/"," }}"]
       TF_VAR_security_group_ids: >-
-        ["${{ secrets.SECURITY_GROUP_IDS }}"]
+        ["${{ secrets.SECURITY_GROUP_IDS//,/"," }}"]
 
     steps:
       - uses: actions/checkout@v4
